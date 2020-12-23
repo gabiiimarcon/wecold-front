@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
+    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+    <title>WeCold - Picolés</title>
+    <script src="./assets/js/main.js" defer></script>
+    <script src="./assets/js/app.js"></script>
+</head>
+
+<body>
+    <header class="l-header" id="header">
+        <nav class="nav bd-grid">
+            <div class="nav__toggle" id="nav-toggle">
+                <span class="iconify" data-icon="ic:outline-shopping-cart" data-inline="false"></span>
+            </div>
+
+            <a href="#" class="nav__logo"></a>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="#home" class="nav__link active">Home</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#" class="nav__link">Massas</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#" class="nav__link">Cones</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#" class="nav__link">Tradicionais</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#" class="nav__link">Picolés</a>
+                    </li>
+                    <li class="nav__item"><a href="./shop.html" class="nav__link">Produtos</a></li>
+                </ul>
+            </div>
+
+            <div class="nav__shop">
+                <span class="iconify" data-icon="heroicons-solid:menu" data-inline="false"></span>
+            </div>
+        </nav>
+    </header>
+
+    <main class="l-main">
+
+        <section class="products section" id="products">
+            <h2 class="section-title">Picolés</h2>
+
+            <div class="products__container bd-grid"></div>
+        </section>
+
+        <div class="icecrean__pages bd-grid">
+            <div>
+                <span class="icecrean__pag">1</span>
+                <span class="icecrean__pag">2</span>
+                <span class="icecrean__pag">3</span>
+                <span class="icecrean__pag">4</span>
+                <span class="icecrean__pag">&#8594</span>
+            </div>
+        </div>
+        </section>
+
+        <!--===== FOOTER =====-->
+        <footer class="footer section">
+            <div class="footer__container bd-grid">
+                <div class="footer__box">
+                    <h3 class="footer__title">WeCold</h3>
+                    <p class="footer__description">Resfriando o calor em 2020.</p>
+                </div>
+
+                <div class="footer__box">
+                    <h3 class="footer__title">EXPLORE</h3>
+                    <ul>
+                        <li><a href="#home" class="footer__link">Pagina Inicial</a></li>
+                        <li><a href="#products" class="footer__link">Massas</a></li>
+                        <li><a href="#tropicais" class="footer__link">Cones</a></li>
+                        <li><a href="#new" class="footer__link">Tradicionais</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__box">
+                    <h3 class="footer__title">+INFORMAÇÕES</h3>
+                    <ul>
+                        <li><a href="#" class="footer__link">Sobre Nós</a></li>
+                        <li><a href="#" class="footer__link">Atendimento ao cliente</a></li>
+                        <li><a href="#" class="footer__link">Localização</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__box footer__social">
+                    <span class="iconify" data-icon="cib:facebook-f" data-inline="false"></span>
+                    <span class="iconify" data-icon="fe:instagram" data-inline="false"></span>
+                    <span class="iconify" data-icon="ant-design:twitter-outlined" data-inline="false"></span>
+                    <span class="iconify" data-icon="ant-design:google-outlined" data-inline="false"></span>
+                </div>
+
+            </div>
+
+            <p class="footer__copy">&#169; 2020 WeCold. All right reserved</p>
+        </footer>
+        <script>
+            async function incluirSorveteNoDOM() {
+                const produtos = await buscarProdutosPorCategoria('picoles')
+                const constainerProdutos = document.querySelector('.products__container')
+
+                for (const produto of produtos) {
+                    const { name, price, image } = produto,
+                        preco = price.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
+
+                    constainerProdutos.innerHTML += `
+                    <article class="icecrean">
+                    <img src="${BASE_URL}${image.url}" alt="" class="icecrean__img" />
+                    <span class="icecrean__name">${name}</span>
+                    <span class="icecrean__price">${preco}</span>
+                    <a href="#" class="button-light">
+                        Saiba mais
+                        <span class="iconify" data-icon="bi:arrow-right-short" data-inline="false"></span>
+                    </a>
+                </article>
+                    `
+                }
+            }
+
+            incluirSorveteNoDOM()
+        </script>
+</body>
+
+</html>
